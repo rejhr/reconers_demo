@@ -13,6 +13,7 @@ import {
   CubeCamera,
   MeshRefractionMaterial,
   useHelper,
+  Html,
 } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { RGBELoader } from "three-stdlib";
@@ -24,7 +25,8 @@ import { useControls } from "leva";
 export default function Render() {
   return (
     <Canvas
-      style={{ background: "transparent" }}
+      eventSource={document.getElementById("root")}
+      eventPrefix="client"
       shadows
       dpr={[1, 2]}
       gl={{
@@ -38,6 +40,7 @@ export default function Render() {
         fov: 25,
       }}
     >
+      <color attach="background" args={["#e0e0e0"]} />
       <SceneLights />
       <group>
         <Center top>
@@ -200,12 +203,13 @@ export function Symbol({ props }) {
         {(texture) => (
           // 투명한 재질의 그림자 내부 빛 산란 효과를 위한 Caustics
           <Caustics
+            toneMapped={false}
             color={config.Color}
             lightSource={[14, 30, -20]}
             worldRadius={0.18}
             ior={2}
             backfaceIor={1.5}
-            intensity={0.05}
+            intensity={0.1}
           >
             {/* 안쪽에서 빛을 굴절 및 반사하는 요소 */}
             <SymbolGeometry ref={ref} side="inside" renderOrder={0}>
@@ -229,6 +233,14 @@ export function Symbol({ props }) {
           </Caustics>
         )}
       </CubeCamera>
+      {/* <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, -0.01, 0]}
+        receiveShadow
+      >
+        <planeGeometry args={[10, 10]} />
+        <meshStandardMaterial transparent opacity={1} />
+      </mesh> */}
     </group>
   );
 }
