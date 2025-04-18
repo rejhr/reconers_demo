@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5aa2ec05.css",
+    "main.js": "/static/js/main.89752677.js",
+    "static/media/Satoshi-Variable.woff": "/static/media/Satoshi-Variable.4db206aaad2132de9db7.woff",
+    "index.html": "/index.html",
+    "main.5aa2ec05.css.map": "/static/css/main.5aa2ec05.css.map",
+    "main.89752677.js.map": "/static/js/main.89752677.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5aa2ec05.css",
+    "static/js/main.89752677.js"
+  ]
+}
